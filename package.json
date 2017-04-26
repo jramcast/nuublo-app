@@ -1,0 +1,42 @@
+{
+  "name": "nuublo-app",
+  "version": "1.0.0",
+  "description": "Nuublo webapp",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jramcast/nuublo-app.git"
+  },
+  "keywords": [
+    "weather",
+    "machine-learning",
+    "nlp",
+    "twitter"
+  ],
+  "author": "jaime.ram@gmail.com",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/jramcast/nuublo-app/issues"
+  },
+  "homepage": "https://github.com/jramcast/nuublo-app#readme",
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.3",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "deck.gl": "^4.0.4",
+    "luma.gl": "^3.0.1",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "socket.io": "^1.7.3",
+    "twitter": "^1.7.0",
+    "winston": "^2.3.1"
+  }
+}
