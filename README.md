@@ -1,0 +1,1 @@
+Pruebas con TypeScript, DDD y arquitectura hexagonal.

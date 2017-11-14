@@ -1,7 +1,12 @@
-const tweetsCollector = require('./tweets/collector');
+export default {
+    port: process.env.PORT || 8085,
 
+    // options for machine learning classifier
+    classifier: {
+        url: 'http://ubuntu-server:8752/prediction'
+    },
 
-const options = {
+    // twitter streaming api options
     twitter: {
         track: [
             'colaboradoresdeltiempo',
@@ -11,16 +16,6 @@ const options = {
             '#eltiempo',
             '@AEMET',
             '#AEMET',
-            'radar tormenta',
-            'radar precipitacion',
-            'radar copos',
-            'radar nieve',
-            'radar nevando',
-            'radar granizo',
-            'radar rayos',
-            'radar lluvia',
-            'radar chubascos',
-            'radar aemet',
             'sinobas',
             'ecazatormentas',
             'la que esta cayendo nieve',
@@ -58,7 +53,6 @@ const options = {
             'picazomario',
             'aemet',
             'aemet avisos',
-            'rain radar',
             'temporal viento',
             'temporal lluvia',
             'temporal nieve',
@@ -88,9 +82,114 @@ const options = {
             'tromba de agua',
             'nubes desarrollo',
             'polar vortex',
-            'vortice polar'
-        ].join(','),
-        follow: [
+            'vortice polar',
+            'severa',
+            'severe',
+            'lluvia',
+            'hace viento',
+            'nevando',
+            'aguacero',
+            'nieva',
+            'llover',
+            'sol',
+            'rain',
+            'tormenta',
+            'frío',
+            'sigue',
+            '❄',
+            'nieve',
+            'temporal',
+            'calor',
+            'agua',
+            'radar',
+            '°c',
+            '☔',
+            'warning',
+            'polar',
+            'weather',
+            'cielo',
+            'vortex',
+            'tornado',
+            'paraguas',
+            '⚠',
+            'km',
+            '🌧',
+            'info',
+            'eléctrica',
+            'lluvias',
+            'mm',
+            'clima',
+            'cae',
+            'norte',
+            'snow',
+            'ºc',
+            'llueva',
+            'proteccion civil',
+            'activos',
+            'mar',
+            'nubes',
+            'frio',
+            'temperatura',
+            'cold',
+            'alerta',
+            'naranja',
+            'temp',
+            'aviso',
+            'proximos días',
+            'alerta',
+            'activa',
+            'estaciones',
+            'según',
+            'automáticas',
+            'superficie',
+            'agencia',
+            'meteorología',
+            'prevé',
+            'temperaturas',
+            'temporal',
+            'predicción',
+            'previsión',
+            'fenómenos costeros',
+            'riesgo',
+            'litros',
+            'nevadas',
+            '🔔',
+            'precipitaciones',
+            'probabilidad',
+            'viento',
+            '⛄',
+            'meteorológica',
+            'nuboso',
+            'máxima',
+            'precaución',
+            'temperatura',
+            'rachas',
+            'actualización',
+            'información',
+            'mínima',
+            '°',
+            '🌧',
+            'cielos',
+            'nubosos',
+            'posibilidad',
+            'nevar',
+            'ºc',
+            'situación',
+            'nubosidad',
+            'mínimas',
+            'estación',
+            'invierno',
+            'precipitación',
+            'litoral',
+            'observatorio',
+            'cielo',
+            'olas',
+            'meteorológico',
+            'flooding',
+            'inundacion',
+            'nevazo'
+          ].join(','),
+          follow: [
             '89707859',
             '1857150498',
             '310806928',
@@ -146,62 +245,4 @@ const options = {
             '188685493'
         ].join(',')
     },
-}
-
-
-const url = require('url');
-const path = require('path');
-const fs = require('fs');
-const app = require('http').createServer(handler)
-const io = require('socket.io')(app);
-const port = process.env.PORT || 8888;
-
-function handler(request, response) {
-
-  const uri = url.parse(request.url).pathname;
-  let filename = path.join(process.cwd(), 'client/', uri);
-
-  fs.exists(filename, (exists) => {
-    if (!exists) {
-      response.writeHead(404, { 'Content-Type': 'text/plain'});
-      response.write('404 Not Found\n');
-      response.end();
-      return;
-    }
-
-    if (fs.statSync(filename).isDirectory()) {
-      filename += '/index.html';
-    }
-
-    fs.readFile(filename, 'binary', (err, file) => {
-      if (err) {
-        response.writeHead(500, { 'Content-Type': 'text/plain' });
-        response.write(`${err}\n`);
-        response.end();
-        return;
-      }
-
-      response.writeHead(200);
-      response.write(file, 'binary');
-      response.end();
-    });
-  });
-}
-
-const connectedSockets = [];
-
-tweetsCollector
-    .start(options.twitter)
-    .onTweet((tweet) => {
-      console.log(tweet.text);
-      connectedSockets
-        .forEach(socket => socket.emit('tweet', tweet));
-    });
-
-io.on('connection', (socket) => {
-  connectedSockets.push(socket);
-});
-
-app.listen(parseInt(port, 10));
-
-console.log('Server running at\n  => http://localhost:' + port + '/\nCTRL + C to shutdown');
+};
