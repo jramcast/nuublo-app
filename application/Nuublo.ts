@@ -1,7 +1,7 @@
 import MessageStream from '../useCases/ports/MessageStream';
 import MessageClassifier from '../domain/ports/MessageClassifier';
 import discoverWeatherMessages from '../useCases/discoverWeatherMessages';
-import Broadcaster from './Broadcaster';
+import Broadcaster from './ports/Broadcaster';
 
 
 /**
