@@ -1,8 +1,8 @@
 
 import 'jest';
 import sinon = require('sinon');
-import Message from '../../server/domain/Message';
-import MessageProcessor from '../../server/domain/MessageProcessor';
+import Message from '../../domain/Message';
+import MessageProcessor from '../../domain/MessageProcessor';
 
 const sandbox = sinon.sandbox.create();
 

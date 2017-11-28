@@ -1,8 +1,8 @@
 import 'jest';
 import sinon = require('sinon');
-import discoverWeatherMessages from '../../server/useCases/discoverWeatherMessages';
-import MessageStream from '../../server/useCases/ports/MessageStream';
-import MessageBroadcaster from '../../server/useCases/ports/MessageBroadcaster';
+import discoverWeatherMessages from '../../useCases/discoverWeatherMessages';
+import MessageStream from '../../useCases/ports/MessageStream';
+import MessageBroadcaster from '../../useCases/ports/MessageBroadcaster';
 
 
 const sandbox = sinon.sandbox.create();

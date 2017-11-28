@@ -2,9 +2,9 @@
   "name": "nuublo-app",
   "version": "1.0.0",
   "description": "Nuublo webapp",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "start": "ts-node server/index.ts",
+    "start": "ts-node index.ts",
     "test": "jest --notify",
     "test:watch": "jest --notify --watch",
     "lint": "tslint -c tslint.json 'server/**/*.ts'"

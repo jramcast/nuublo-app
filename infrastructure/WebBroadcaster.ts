@@ -18,7 +18,7 @@ export default {
 
     start: function start(opts: any) {
         const app = express();
-        app.use(express.static(`${__dirname}/../../client`));
+        app.use(express.static(`${__dirname}/client`));
         const server = new http.Server(app);
         io = setupSockets(server);
         server.listen(opts.port);

@@ -2,13 +2,13 @@ import Message from '../domain/Message';
 
 
 /**
- * A server.
- * Its capabilities are serving the application and broadcasting messages
+ * A broadcaster
+ * Emits messages to the users
  */
-export default interface Server {
+export default interface Broadcaster {
 
     /**
-     * Starts a web server
+     * Starts the broadcaster
      */
     start(settings: any);
 
@@ -16,4 +16,5 @@ export default interface Server {
      * Broadcasts a message to the clients
      */
     broadcast(message: Message);
+
 }
